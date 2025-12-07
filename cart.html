@@ -1,0 +1,281 @@
+<! DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Cart — Void Apparel</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="cart.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">VOID APPAREL</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="cart active" aria-label="Cart">🛒 <span class="cart-label">Cart</span></a>
+      </div>
+    </nav>
+
+    <main>
+      <header class="section-header">
+        <a class="section-back" href="shop.html" aria-label="Back to shop">←</a>
+        <div class="heading-stack">
+          <h1 class="section-title">YOUR CART</h1>
+          <p class="subtitle" id="cart-count">3 items in your cart</p>
+        </div>
+      </header>
+
+      <div class="cart-layout">
+        <!-- Cart Items -->
+        <section class="cart-items-section">
+          <div class="cart-items" id="cart-items">
+            <!-- Cart Item 1 -->
+            <article class="cart-item" data-id="1" data-price="189">
+              <div class="item-image img-jeans" role="img" aria-label="Distressed Bootcut Jeans"></div>
+              <div class="item-details">
+                <div class="item-info">
+                  <h3 class="item-title">Distressed Bootcut Jeans</h3>
+                  <p class="item-variant">Size: 32 | Color: Dark Wash</p>
+                  <p class="item-customization">Custom: Patches, Embroidery</p>
+                </div>
+                <div class="item-actions">
+                  <div class="quantity-control">
+                    <button class="qty-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                    <span class="qty-value">1</span>
+                    <button class="qty-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                  </div>
+                  <div class="item-price">$189</div>
+                  <button class="remove-btn" aria-label="Remove item">✕</button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Cart Item 2 -->
+            <article class="cart-item" data-id="2" data-price="245">
+              <div class="item-image img-winter" role="img" aria-label="Oversized Wool Hoodie"></div>
+              <div class="item-details">
+                <div class="item-info">
+                  <h3 class="item-title">Oversized Wool Hoodie</h3>
+                  <p class="item-variant">Size: L | Color: Charcoal</p>
+                  <p class="item-customization">Custom: Embroidered Back Panel</p>
+                </div>
+                <div class="item-actions">
+                  <div class="quantity-control">
+                    <button class="qty-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                    <span class="qty-value">1</span>
+                    <button class="qty-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                  </div>
+                  <div class="item-price">$245</div>
+                  <button class="remove-btn" aria-label="Remove item">✕</button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Cart Item 3 -->
+            <article class="cart-item" data-id="3" data-price="256">
+              <div class="item-image img-accessories" role="img" aria-label="Studded Leather Tote"></div>
+              <div class="item-details">
+                <div class="item-info">
+                  <h3 class="item-title">Studded Leather Tote</h3>
+                  <p class="item-variant">Color: Black</p>
+                  <p class="item-customization">Custom: Hand-placed Studs</p>
+                  <span class="item-badge sale">Sale</span>
+                </div>
+                <div class="item-actions">
+                  <div class="quantity-control">
+                    <button class="qty-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                    <span class="qty-value">1</span>
+                    <button class="qty-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                  </div>
+                  <div class="item-price">
+                    <span class="original-price">$320</span>
+                    $256
+                  </div>
+                  <button class="remove-btn" aria-label="Remove item">✕</button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Empty Cart State (hidden by default) -->
+          <div class="empty-cart" id="empty-cart" style="display: none;">
+            <div class="empty-cart-icon">🛒</div>
+            <h3>Your cart is empty</h3>
+            <p>Looks like you haven't added any items yet.</p>
+            <a href="shop.html" class="continue-shopping-btn">Continue Shopping</a>
+          </div>
+        </section>
+
+        <!-- Order Summary -->
+        <aside class="order-summary" id="order-summary">
+          <h3>Order Summary</h3>
+          
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal">$690</span>
+          </div>
+          
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="shipping">Calculated at checkout</span>
+          </div>
+          
+          <div class="summary-row">
+            <span>Estimated Tax</span>
+            <span id="tax">$55. 20</span>
+          </div>
+
+          <!-- Promo Code -->
+          <div class="promo-section">
+            <label for="promo-code">Promo Code</label>
+            <div class="promo-input-group">
+              <input type="text" id="promo-code" placeholder="Enter code" />
+              <button class="apply-promo-btn" id="apply-promo">Apply</button>
+            </div>
+            <p class="promo-message" id="promo-message"></p>
+          </div>
+
+          <div class="summary-divider"></div>
+
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="total">$745. 20</span>
+          </div>
+
+          <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+          
+          <a href="shop.html" class="continue-link">← Continue Shopping</a>
+
+          <div class="payment-methods">
+            <p>We accept</p>
+            <div class="payment-icons">
+              <span class="payment-icon">💳</span>
+              <span class="payment-icon">🏦</span>
+              <span class="payment-icon">📱</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-pill">© 2025 Void Apparel. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Cart functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const cartItems = document.getElementById('cart-items');
+      const emptyCart = document.getElementById('empty-cart');
+      const orderSummary = document.getElementById('order-summary');
+      const subtotalEl = document.getElementById('subtotal');
+      const taxEl = document.getElementById('tax');
+      const totalEl = document. getElementById('total');
+      const cartCountEl = document.getElementById('cart-count');
+
+      function updateCart() {
+        const items = cartItems.querySelectorAll('.cart-item');
+        let subtotal = 0;
+        let itemCount = 0;
+
+        items.forEach(item => {
+          const price = parseFloat(item. dataset.price);
+          const qty = parseInt(item.querySelector('.qty-value').textContent);
+          subtotal += price * qty;
+          itemCount += qty;
+        });
+
+        const tax = subtotal * 0.08;
+        const total = subtotal + tax;
+
+        subtotalEl.textContent = '$' + subtotal.toFixed(0);
+        taxEl.textContent = '$' + tax.toFixed(2);
+        totalEl.textContent = '$' + total.toFixed(2);
+        cartCountEl.textContent = itemCount + ' item' + (itemCount !== 1 ? 's' : '') + ' in your cart';
+
+        if (items.length === 0) {
+          emptyCart.style.display = 'flex';
+          orderSummary.style.display = 'none';
+        } else {
+          emptyCart.style.display = 'none';
+          orderSummary.style. display = 'block';
+        }
+      }
+
+      cartItems.addEventListener('click', function(e) {
+        const btn = e.target.closest('.qty-btn');
+        if (btn) {
+          const item = btn.closest('.cart-item');
+          const qtyEl = item.querySelector('.qty-value');
+          let qty = parseInt(qtyEl. textContent);
+          const action = btn.dataset.action;
+
+          if (action === 'increase') {
+            qty++;
+          } else if (action === 'decrease' && qty > 1) {
+            qty--;
+          }
+
+          qtyEl.textContent = qty;
+          
+          const basePrice = parseFloat(item.dataset.price);
+          const priceEl = item.querySelector('.item-price');
+          const originalPriceSpan = priceEl.querySelector('. original-price');
+          if (originalPriceSpan) {
+            priceEl.innerHTML = '<span class="original-price">$' + (320 * qty) + '</span> $' + (basePrice * qty);
+          } else {
+            priceEl. textContent = '$' + (basePrice * qty);
+          }
+
+          updateCart();
+        }
+
+        const removeBtn = e.target.closest('.remove-btn');
+        if (removeBtn) {
+          const item = removeBtn.closest('.cart-item');
+          item.style.opacity = '0';
+          item.style.transform = 'translateX(-20px)';
+          setTimeout(() => {
+            item.remove();
+            updateCart();
+          }, 300);
+        }
+      });
+
+      const applyPromoBtn = document. getElementById('apply-promo');
+      const promoInput = document.getElementById('promo-code');
+      const promoMessage = document.getElementById('promo-message');
+
+      applyPromoBtn.addEventListener('click', function() {
+        const code = promoInput.value.trim(). toUpperCase();
+        if (code === 'VOID20') {
+          promoMessage.textContent = '20% discount applied!';
+          promoMessage.style.color = '#4ade80';
+        } else if (code === '') {
+          promoMessage.textContent = 'Please enter a promo code';
+          promoMessage.style.color = '#ef4444';
+        } else {
+          promoMessage.textContent = 'Invalid promo code';
+          promoMessage.style.color = '#ef4444';
+        }
+      });
+
+      document.getElementById('checkout-btn').addEventListener('click', function() {
+        this.textContent = 'Processing...';
+        this.disabled = true;
+        setTimeout(() => {
+          alert('Redirecting to checkout...');
+          this.textContent = 'Proceed to Checkout';
+          this. disabled = false;
+        }, 1500);
+      });
+
+      updateCart();
+    });
+  </script>
+</body>
+</html>

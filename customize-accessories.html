@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Customize Accessories — Void Apparel</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="customize-accessories.css" />
+  <script>
+    // Mirror behavior from other pages:
+    // - show selected accessory type and bag type in the preview meta
+    // - toggle the bag-type group visibility
+    function handleAccessoryTypeChange(){
+      var type = document.getElementById('accessory-type').value;
+      var bagGroup = document.getElementById('bag-type-group');
+      bagGroup.style.display = (type === 'Bag') ? 'block' : 'none';
+
+      var preview = document.getElementById('accessory-preview-label');
+      if(preview) preview.textContent = 'Type: ' + type + (type === 'Bag' ? ' (' + (document.getElementById('bag-type').value || '') + ')' : '');
+    }
+
+    function updateBagTypePreview(){
+      var type = document.getElementById('accessory-type').value;
+      var bag = document.getElementById('bag-type').value;
+      var preview = document.getElementById('accessory-preview-label');
+      if(preview) preview.textContent = 'Type: ' + type + (type === 'Bag' ? ' (' + bag + ')' : '');
+    }
+
+    window.addEventListener('DOMContentLoaded', function(){
+      var acc = document.getElementById('accessory-type');
+      var bag = document.getElementById('bag-type');
+      if(acc){
+        acc.addEventListener('change', handleAccessoryTypeChange);
+        handleAccessoryTypeChange();
+      }
+      if(bag){
+        bag.addEventListener('change', updateBagTypePreview);
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">VOID APPAREL</div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#" class="cart" aria-label="Cart">🛒 <span class="cart-label">Cart</span></a>
+      </div>
+    </nav>
+
+    <main>
+      <header class="section-header">
+        <a class="section-back" href="start-creating.html" aria-label="Back to start">←</a>
+        <div class="heading-stack">
+          <h2 class="section-title">CUSTOMIZE ACCESSORIES</h2>
+          <p class="subtitle">Add your style to bags, wallets and small pieces.</p>
+        </div>
+      </header>
+
+      <form class="custom-form" id="accessories-form">
+        <div class="option-grid">
+          <div class="option-group">
+            <label for="accessory-type">Accessory Type</label>
+            <select id="accessory-type" name="accessory-type">
+              <option>Bag</option>
+              <option>Wallet</option>
+            </select>
+          </div>
+
+          <div class="option-group" id="bag-type-group" style="display:none">
+            <label for="bag-type">Bag Type</label>
+            <select id="bag-type" name="bag-type">
+              <option>Tote</option>
+              <option>Backpack</option>
+              <option>Messenger</option>
+              <option>Clutch</option>
+              <option>Crossbody</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label>Personalize</label>
+            <div class="checkboxes">
+              <label><input type="checkbox" name="metal"> Metal pieces</label>
+              <label><input type="checkbox" name="studs"> Studs</label>
+              <label><input type="checkbox" name="stones"> Stones</label>
+              <label><input type="checkbox" name="patches"> Patches</label>
+              <label><input type="checkbox" name="embroidery"> Embroidery</label>
+            </div>
+          </div>
+
+          <div class="option-group">
+            <label for="color">Choose Main Color</label>
+            <input type="color" id="color" name="color" value="#222222">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="custom-btn" type="submit">Preview Design</button>
+          <button class="custom-btn secondary" type="button">Save Draft</button>
+        </div>
+      </form>
+
+      <section class="preview-area">
+        <h3>Your Custom Accessory Preview</h3>
+        <div class="preview-img accessories-preview" aria-hidden="true"></div>
+        <div class="preview-meta">
+          <span id="accessory-preview-label" class="muted">Type: Bag (Tote)</span>
+        </div>
+
+        <div class="notes">
+          <h4>Notes</h4>
+          <p>Preview shows approximate layout of hardware and materials. Final look depends on selected options.</p>
+          <p>Lead time: 8–15 business days depending on options and hand finishes.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-pill">© 2025 Void Apparel. All rights reserved.</div>
+    </footer>
+  </div>
+</body>
+</html>

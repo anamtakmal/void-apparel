@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Customize Jeans — Void Apparel</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="customize-jeans.css" />
+  <script>
+    // Small enhancement to show selected fabric in the preview caption.
+    function updateFabricPreview() {
+      var sel = document.getElementById('fabric-type');
+      var label = document.getElementById('fabric-preview-label');
+      if (!sel || !label) return;
+      label.textContent = 'Fabric: ' + sel.options[sel.selectedIndex].text;
+    }
+    window.addEventListener('DOMContentLoaded', function(){
+      var el = document.getElementById('fabric-type');
+      if (el) {
+        el.addEventListener('change', updateFabricPreview);
+        updateFabricPreview();
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">VOID APPAREL</div>
+
+      <!-- Nav updated: Home, Shop, About, Contact, Cart (emoji) -->
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+
+        <!-- Replaced SVG cart with emoji as requested -->
+        <a href="#" class="cart" aria-label="Cart">🛒 <span class="cart-label">Cart</span></a>
+      </div>
+    </nav>
+
+    <main>
+      <header class="section-header">
+        <a class="section-back" href="start-creating.html" aria-label="Back to start">←</a>
+        <div class="heading-stack">
+          <h2 class="section-title">CUSTOMIZE JEANS</h2>
+          <p class="subtitle">Choose fit, fabric and personalize the details.</p>
+        </div>
+      </header>
+
+      <form class="custom-form" id="jeans-form">
+        <div class="option-grid">
+          <div class="option-group">
+            <label for="fit">Fit</label>
+            <select id="fit" name="fit">
+              <option>Bootcut</option>
+              <option>Cargo</option>
+              <option>Straight</option>
+              <option>Slim</option>
+              <option>Baggy</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label for="fabric-type">Fabric Type</label>
+            <select id="fabric-type" name="fabric-type">
+              <option>Denim (Classic)</option>
+              <option>Stretch Denim</option>
+              <option>Rigid Denim</option>
+              <option>Selvage Denim</option>
+              <option>Corduroy</option>
+              <option>Twill</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label>Personalize</label>
+            <div class="checkboxes">
+              <label><input type="checkbox" name="patches"> Patches</label>
+              <label><input type="checkbox" name="embroidery"> Embroidery</label>
+              <label><input type="checkbox" name="rips"> Rips</label>
+            </div>
+          </div>
+
+          <div class="option-group">
+            <label for="color">Choose Color</label>
+            <input type="color" id="color" name="color" value="#222222">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="custom-btn" type="submit">Preview Design</button>
+          <button class="custom-btn secondary" type="button">Save Draft</button>
+        </div>
+      </form>
+
+      <section class="preview-area">
+        <h3>Your Custom Jeans Preview</h3>
+        <div class="preview-img jeans-preview" aria-hidden="true"></div>
+        <div class="preview-meta">
+          <span id="fabric-preview-label" class="muted">Fabric: Denim (Classic)</span>
+        </div>
+
+        <div class="notes">
+          <h4>Notes</h4>
+          <p>Lead time: 10–15 business days for custom finishes. Hand-finishes add time.</p>
+          <p>Care: wash cold, reshape while damp, avoid bleach.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <!-- Footer pill expanded to full width by CSS -->
+      <div class="footer-pill">© 2025 Void Apparel. All rights reserved.</div>
+    </footer>
+  </div>
+</body>
+</html>

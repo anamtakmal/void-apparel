@@ -1,0 +1,206 @@
+:root{
+  --bg:#0b0b0c;
+  --panel:#0f0f10;
+  --muted:#bdbdbd;
+  --text:#eaeaea;
+  --accent:#ffffff;
+  --btn:#212121;
+  --shadow-lg: 0 26px 50px rgba(0,0,0,0.75);
+  --shadow-md: 0 18px 44px rgba(0,0,0,0.6);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:linear-gradient(180deg,#0b0b0c,#060606);
+  font-family:'Montserrat', Arial, sans-serif;
+  color:var(--text);
+}
+
+/* Panel */
+.container{
+  width:100%;
+  min-height:100vh;
+  margin:0 auto;
+  background: linear-gradient(180deg,#0f0f10 0%, #0c0c0d 100%);
+  padding:48px 64px;
+  box-shadow: var(--shadow-lg) inset;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+/* NAV */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-weight:700;
+  font-size:28px;
+  letter-spacing:2px;
+}
+.nav-links a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:20px;
+  font-size:15px;
+}
+
+/* Header: arrow + heading */
+/* Change here: align-items set to baseline so the arrow sits directly in front of the heading line */
+.section-header{
+  display:flex;
+  align-items:baseline;   /* <-- ensures arrow aligns with the heading text baseline (in front of the line) */
+  gap:12px;
+  max-width:1100px;
+}
+
+/* arrow - inline glyph (no boxed rectangle) */
+.section-back{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  line-height:1;
+  color:var(--text);
+  text-decoration:none;
+  background: transparent;
+  padding:0;
+  margin:0;
+  /* a small right margin so it's visually separated from the heading */
+  margin-right:6px;
+  transition: transform .12s, color .12s;
+}
+.section-back:hover{
+  transform: translateX(-6px);
+  color: #fff;
+}
+
+/* heading-stack keeps title + subtitle together, subtitle below the heading start */
+.heading-stack{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+/* Heading & subtitle sizes */
+.section-title{
+  font-size:20px;            /* kept same as your other screens */
+  letter-spacing:0.5px;
+  font-weight:700;
+  margin:0;
+  line-height:1.1;           /* ensure predictable baseline */
+}
+.subtitle{
+  color:var(--muted);
+  font-size:15px;
+  margin:8px 0 0 0;          /* unchanged spacing */
+}
+
+/* Creating options (unchanged) */
+.creating-options{
+  display:flex;
+  gap:36px;
+  justify-content:center;
+  align-items:flex-start;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  margin-top:18px;
+  padding: 10px 0 30px 0;
+  max-width:1100px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.option-card{
+  background: linear-gradient(180deg,#171717,#0f0f10);
+  border-radius:14px;
+  flex: 0 0 calc((100% - 72px) / 3);
+  max-width:420px;
+  min-width:300px;
+  overflow:hidden;
+  text-decoration:none;
+  color:var(--text);
+  box-shadow: 0 28px 50px rgba(0,0,0,0.65);
+  display:flex;
+  flex-direction:column;
+  transition: transform .18s, box-shadow .18s;
+}
+.option-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 40px 90px rgba(0,0,0,0.75);
+}
+.option-img{
+  height:220px;
+  background-size:cover;
+  background-position:center;
+  filter:grayscale(70%) brightness(.45);
+  border-top-left-radius:14px;
+  border-top-right-radius:14px;
+}
+.card-body{
+  padding:22px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.06), transparent);
+}
+.option-title{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.option-desc{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.45;
+}
+
+/* Footer (unchanged) */
+footer{
+  text-align:center;
+  padding-bottom:20px;
+}
+.footer-pill{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  background:#151515;
+  color:var(--muted);
+  padding:14px 20px;
+  border-radius:10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  font-size:15px;
+  margin: 18px 0 0 0;
+  text-align:center;
+}
+
+/* Responsive fallbacks */
+@media (max-width: 1250px){
+  .option-card{ min-width:280px; max-width:380px; flex:0 0 calc((100% - 72px) / 3); }
+  .option-img{ height:200px; }
+  .section-header{ max-width:100%; }
+}
+@media (max-width: 1100px){
+  .creating-options{ flex-wrap:wrap; overflow-x:visible; justify-content:center; }
+  .option-card{
+    flex: 0 0 100%;
+    max-width:520px;
+    min-width:unset;
+    width:100%;
+  }
+  .option-img{ height:180px; }
+  .section-header{ align-items:flex-start; gap:12px; }
+  .section-back{ font-size:22px; }
+  .section-title{ font-size:16px; }
+  .heading-stack{ justify-content:flex-start; }
+}
+@media (max-width:640px){
+  .container{ padding:18px; min-height:unset; }
+  .section-header{ gap:12px; }
+  .section-back{ font-size:20px; }
+  .section-title{ font-size:14px; }
+  .creating-options{ flex-direction:column; gap:16px; align-items:stretch; }
+  .option-card{ width:100%; max-width:100%; }
+  .option-img{ height:140px; }
+}

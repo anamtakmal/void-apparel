@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sign Up — Void Apparel</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">VOID APPAREL</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact. html">Contact</a>
+        <a href="cart.html" class="cart" aria-label="Cart">🛒 <span class="cart-label">Cart</span></a>
+      </div>
+    </nav>
+
+    <main class="auth-main">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h1 class="auth-title">JOIN THE VOID</h1>
+          <p class="auth-subtitle">Create your account and start designing</p>
+        </div>
+
+        <form class="auth-form" id="signup-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first-name" placeholder="First name" required />
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last-name" placeholder="Last name" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required />
+            <span class="input-hint">Must be at least 8 characters</span>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required />
+          </div>
+
+          <label class="checkbox-label terms-checkbox">
+            <input type="checkbox" name="terms" required /> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+
+          <button type="submit" class="auth-btn">Create Account</button>
+        </form>
+
+        <div class="auth-divider">
+          <span>or continue with</span>
+        </div>
+
+        <div class="social-auth">
+          <button type="button" class="social-btn">Google</button>
+          <button type="button" class="social-btn">Apple</button>
+        </div>
+
+        <p class="auth-footer auth-footer-lower">
+          Already have an account?  <a href="login.html">Sign in</a>
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-pill">© 2025 Void Apparel. All rights reserved.</div>
+    </footer>
+  </div>
+</body>
+</html>

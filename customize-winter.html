@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Customize Winter — Void Apparel</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="customize-winter.css" />
+  <script>
+    // update fabric preview label and keep bag-like behavior consistent with other pages
+    function updateFabricPreview() {
+      var sel = document.getElementById('fabric-type');
+      var label = document.getElementById('fabric-preview-label');
+      if (!sel || !label) return;
+      label.textContent = 'Fabric: ' + sel.options[sel.selectedIndex].text;
+    }
+
+    window.addEventListener('DOMContentLoaded', function(){
+      var el = document.getElementById('fabric-type');
+      if (el) {
+        el.addEventListener('change', updateFabricPreview);
+        updateFabricPreview();
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">VOID APPAREL</div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#" class="cart" aria-label="Cart">🛒 <span class="cart-label">Cart</span></a>
+      </div>
+    </nav>
+
+    <main>
+      <header class="section-header">
+        <a class="section-back" href="start-creating.html" aria-label="Back to start">←</a>
+        <div class="heading-stack">
+          <h2 class="section-title">CUSTOMIZE WINTER FIT</h2>
+          <p class="subtitle">Create your unique winter outfit by selecting styles and personal details.</p>
+        </div>
+      </header>
+
+      <form class="custom-form" id="winter-form">
+        <div class="option-grid">
+          <div class="option-group">
+            <label for="winter-style">Style</label>
+            <select id="winter-style" name="winter-style">
+              <option>Hoodie</option>
+              <option>Jacket</option>
+              <option>Long Coat</option>
+              <option>Sweater</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label for="fabric-type">Fabric Type</label>
+            <select id="fabric-type" name="fabric-type">
+              <option>Wool</option>
+              <option>Fleece</option>
+              <option>Insulated Shell</option>
+              <option>Leather</option>
+              <option>Denim</option>
+              <option>Corduroy</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label>Personalize</label>
+            <div class="checkboxes">
+              <label><input type="checkbox" name="embroidery"> Embroidery</label>
+              <label><input type="checkbox" name="zippers"> Extra Zipper</label>
+              <label><input type="checkbox" name="patches"> Patches</label>
+              <label><input type="checkbox" name="lining"> Removable Lining</label>
+            </div>
+          </div>
+
+          <div class="option-group">
+            <label for="color">Choose Color</label>
+            <input type="color" id="color" name="color" value="#303030" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="custom-btn" type="submit">Preview Design</button>
+          <button class="custom-btn secondary" type="button">Save Draft</button>
+        </div>
+      </form>
+
+      <section class="preview-area">
+        <h3>Your Custom Winter Fit Preview</h3>
+        <div class="preview-img winter-preview" aria-hidden="true"></div>
+        <div class="preview-meta">
+          <span id="fabric-preview-label" class="muted">Fabric: Wool</span>
+        </div>
+
+        <div class="notes">
+          <h4>Notes</h4>
+          <p>Consider lining and insulation options for added warmth. Hardware choices (snaps, zips) change the look and functionality.</p>
+          <p>Lead time: 10–18 business days depending on options and hand finishes.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-pill">© 2025 Void Apparel. All rights reserved.</div>
+    </footer>
+  </div>
+</body>
+</html>
