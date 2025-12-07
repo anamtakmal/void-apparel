@@ -199,12 +199,25 @@ curl -X POST http://localhost:8080/api/orders \
 
 ### JWT Settings
 
-Configure JWT in `application.properties`:
+Configure JWT in `application.properties` or use environment variables:
 
 ```properties
 app.jwt.secret=YourSecretKeyHere
 app.jwt.expiration=86400000
 app.jwt.remember-me-expiration=604800000
+```
+
+**For production, use environment variables:**
+```bash
+export APP_JWT_SECRET=your-secure-secret-key-here
+export APP_JWT_EXPIRATION=86400000
+export APP_JWT_REMEMBER_ME_EXPIRATION=604800000
+```
+
+### Business Configuration
+
+```properties
+app.customization.price-per-option=10.00
 ```
 
 ### Database Configuration

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +53,13 @@ public class Cart {
         if (promoCode == null) {
             return BigDecimal.ZERO;
         }
-        return getSubtotal().multiply(promoCode.getDiscountPercentage().divide(BigDecimal.valueOf(100)));
+        return getSubtotal().multiply(promoCode.getDiscountPercentage()
+                .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP));
     }
     
     public BigDecimal getTax() {
         BigDecimal taxableAmount = getSubtotal().subtract(getDiscount());
-        return taxableAmount.multiply(BigDecimal.valueOf(0.08)); // 8% tax
+        return taxableAmount.multiply(BigDecimal.valueOf(0.08)).setScale(2, RoundingMode.HALF_UP); // 8% tax
     }
     
     public BigDecimal getTotal() {

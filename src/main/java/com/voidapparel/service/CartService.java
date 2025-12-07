@@ -8,6 +8,7 @@ import com.voidapparel.model.*;
 import com.voidapparel.repository.CartRepository;
 import com.voidapparel.repository.PromoCodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,9 @@ public class CartService {
     
     @Autowired
     private PromoCodeRepository promoCodeRepository;
+    
+    @Value("${app.customization.price-per-option:10.00}")
+    private BigDecimal customizationPricePerOption;
     
     public Cart getOrCreateCart(User user) {
         return cartRepository.findByUser(user)
@@ -60,7 +64,8 @@ public class CartService {
             if (request.getCustomizations() != null) {
                 newItem.setCustomizations(request.getCustomizations());
                 // Calculate customization price based on number of customizations
-                BigDecimal customizationPrice = BigDecimal.valueOf(request.getCustomizations().size() * 10);
+                BigDecimal customizationPrice = customizationPricePerOption
+                        .multiply(BigDecimal.valueOf(request.getCustomizations().size()));
                 newItem.setCustomizationPrice(customizationPrice);
             }
             
