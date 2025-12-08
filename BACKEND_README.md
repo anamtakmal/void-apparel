@@ -27,7 +27,7 @@ Complete Spring Boot REST API backend for the Void Apparel e-commerce platform.
 ## Prerequisites
 
 - Java 17 or higher
-- Maven 3.6+
+- Maven 3.6+ (optional - Maven Wrapper is included)
 
 ## Getting Started
 
@@ -40,12 +40,38 @@ cd void-apparel
 
 ### 2. Build the Project
 
+**Using Maven Wrapper (recommended - no Maven installation required):**
+
+**Windows:**
+```bash
+mvnw.cmd clean install
+```
+
+**Mac/Linux:**
+```bash
+./mvnw clean install
+```
+
+**Using Maven (if installed):**
 ```bash
 mvn clean install
 ```
 
 ### 3. Run the Application
 
+**Using Maven Wrapper (recommended):**
+
+**Windows:**
+```bash
+mvnw.cmd spring-boot:run
+```
+
+**Mac/Linux:**
+```bash
+./mvnw spring-boot:run
+```
+
+**Using Maven (if installed):**
 ```bash
 mvn spring-boot:run
 ```
@@ -330,14 +356,38 @@ Each customization option adds $10 to the product price:
 
 Run tests with:
 
+**Using Maven Wrapper:**
+```bash
+# Windows
+mvnw.cmd test
+
+# Mac/Linux
+./mvnw test
+```
+
+**Using Maven:**
 ```bash
 mvn test
 ```
 
 ## Building for Production
 
+**Using Maven Wrapper:**
+```bash
+# Windows
+mvnw.cmd clean package
+
+# Mac/Linux
+./mvnw clean package
+```
+
+**Using Maven:**
 ```bash
 mvn clean package
+```
+
+Then run the application:
+```bash
 java -jar target/void-apparel-backend-1.0.0.jar
 ```
 
