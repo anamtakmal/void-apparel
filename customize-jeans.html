@@ -65,9 +65,10 @@
             
             var data = await response.json();
             
-            // Display generated image
-            previewImg.style.backgroundImage = "url('" + data.imageUrl + "')";
-            previewImg.innerHTML = '';
+            // Display generated image using img tag for full visibility
+            previewImg.style.backgroundImage = 'none';
+            previewImg.innerHTML = '<img src="' + data.imageUrl + '" alt="Generated Preview" style="max-width:100%; max-height:500px; object-fit:contain; border-radius:8px;">';
+            previewImg.classList.add('has-image');
             previewImg.classList.remove('loading');
             
             console.log('Generated with prompt:', data.prompt);
