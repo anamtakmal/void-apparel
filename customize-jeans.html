@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="customize-jeans.css" />
   <script>
+    // API Configuration - update this for production
+    window.API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:8080' : '';
+    
     // Small enhancement to show selected fabric in the preview caption.
     function updateFabricPreview() {
       var sel = document.getElementById('fabric-type');
@@ -18,6 +21,63 @@
       if (el) {
         el.addEventListener('change', updateFabricPreview);
         updateFabricPreview();
+      }
+
+      // Add event listener for Preview Design button
+      var form = document.getElementById('jeans-form');
+      if (form) {
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          var previewImg = document.querySelector('.preview-img');
+          if (!previewImg) return;
+          
+          // Show loading state
+          previewImg.innerHTML = '<div class="loading-spinner">Generating preview...</div>';
+          previewImg.style.backgroundImage = 'none';
+          previewImg.classList.add('loading');
+          
+          // Gather customization options
+          var options = {
+            fit: document.getElementById('fit')?.value || 'Bootcut',
+            fabricType: document.getElementById('fabric-type')?.value || 'Denim (Classic)',
+            color: document.getElementById('color')?.value || '#222222',
+            patches: document.querySelector('input[name="patches"]')?.checked || false,
+            embroidery: document.querySelector('input[name="embroidery"]')?.checked || false,
+            rips: document.querySelector('input[name="rips"]')?.checked || false
+          };
+          
+          try {
+            var response = await fetch(window.API_BASE_URL + '/api/designs/generate-preview', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                category: 'jeans',
+                options: options
+              })
+            });
+            
+            if (!response.ok) {
+              throw new Error('Failed to generate preview');
+            }
+            
+            var data = await response.json();
+            
+            // Display generated image
+            previewImg.style.backgroundImage = "url('" + data.imageUrl + "')";
+            previewImg.innerHTML = '';
+            previewImg.classList.remove('loading');
+            
+            console.log('Generated with prompt:', data.prompt);
+            
+          } catch (error) {
+            console.error('Error generating preview:', error);
+            previewImg.innerHTML = '<div class="error">Failed to generate preview. Please try again.</div>';
+            previewImg.classList.remove('loading');
+          }
+        });
       }
     });
   </script>
