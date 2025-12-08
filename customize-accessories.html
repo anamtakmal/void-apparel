@@ -83,19 +83,19 @@
             
             var data = await response.json();
             
-            // Display generated image using img tag for full visibility
+            // Display generated image as full-size img element
             previewImg.style.backgroundImage = 'none';
-            previewImg.innerHTML = '';
-            var img = document.createElement('img');
-            img.src = data.imageUrl;
-            img.alt = 'Generated Preview';
-            img.style.maxWidth = '100%';
-            img.style.maxHeight = '500px';
-            img.style.objectFit = 'contain';
-            img.style.borderRadius = '8px';
-            previewImg.appendChild(img);
-            previewImg.classList.add('has-image');
+            previewImg.style.filter = 'none';
             previewImg.classList.remove('loading');
+            previewImg.classList.add('has-generated-image');
+            previewImg.innerHTML = '<img src="' + data.imageUrl + '" alt="Your Custom Design Preview" />';
+            
+            // Add color overlay based on selected color
+            var selectedColor = document.getElementById('color')?.value || '#222222';
+            var colorOverlay = document.createElement('div');
+            colorOverlay.className = 'color-overlay';
+            colorOverlay.style.backgroundColor = selectedColor;
+            previewImg.appendChild(colorOverlay);
             
             console.log('Generated with prompt:', data.prompt);
             

@@ -153,18 +153,21 @@ public class ImageGenerationService {
     
     /**
      * Get placeholder images based on category
-     * Using Unsplash for high-quality placeholder images
+     * Using Unsplash for high-quality SINGLE PRODUCT placeholder images
      */
     private String getPlaceholderImage(String category) {
         switch (category.toLowerCase()) {
             case "jeans":
-                return "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80";
+                // Single pair of jeans on plain background
+                return "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80";
             case "winter":
-                return "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80";
+                // Single jacket/hoodie on plain background
+                return "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80";
             case "accessories":
-                return "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80";
+                // Single bag on plain background
+                return "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80";
             default:
-                return "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80";
+                return "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80";
         }
     }
     
