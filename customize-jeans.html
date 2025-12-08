@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="customize-jeans.css" />
   <script>
+    // API Configuration - update this for production
+    window.API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:8080' : '';
+    
     // Small enhancement to show selected fabric in the preview caption.
     function updateFabricPreview() {
       var sel = document.getElementById('fabric-type');
@@ -45,7 +48,7 @@
           };
           
           try {
-            var response = await fetch('http://localhost:8080/api/designs/generate-preview', {
+            var response = await fetch(window.API_BASE_URL + '/api/designs/generate-preview', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

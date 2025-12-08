@@ -36,6 +36,8 @@ public class ImageGenerationService {
     
     /**
      * Build a descriptive prompt from customization options
+     * Note: Color values are passed as hex codes for placeholder mode
+     * In a real AI implementation, consider converting hex to descriptive names
      */
     private String buildPrompt(String category, Map<String, Object> options) {
         StringBuilder prompt = new StringBuilder("Professional product photo of ");
@@ -131,6 +133,8 @@ public class ImageGenerationService {
         if (!bagType.isEmpty()) {
             prompt.append(" ").append(bagType);
         }
+        // Note: Material is hardcoded to leather for placeholder mode
+        // In a real AI implementation, this would be configurable
         prompt.append(", leather material, ")
               .append(color).append(" color");
         
