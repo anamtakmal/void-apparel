@@ -67,7 +67,15 @@
             
             // Display generated image using img tag for full visibility
             previewImg.style.backgroundImage = 'none';
-            previewImg.innerHTML = '<img src="' + data.imageUrl + '" alt="Generated Preview" style="max-width:100%; max-height:500px; object-fit:contain; border-radius:8px;">';
+            previewImg.innerHTML = '';
+            var img = document.createElement('img');
+            img.src = data.imageUrl;
+            img.alt = 'Generated Preview';
+            img.style.maxWidth = '100%';
+            img.style.maxHeight = '500px';
+            img.style.objectFit = 'contain';
+            img.style.borderRadius = '8px';
+            previewImg.appendChild(img);
             previewImg.classList.add('has-image');
             previewImg.classList.remove('loading');
             
