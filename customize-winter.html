@@ -20,6 +20,64 @@
         el.addEventListener('change', updateFabricPreview);
         updateFabricPreview();
       }
+
+      // Add event listener for Preview Design button
+      var form = document.getElementById('winter-form');
+      if (form) {
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          var previewImg = document.querySelector('.preview-img');
+          if (!previewImg) return;
+          
+          // Show loading state
+          previewImg.innerHTML = '<div class="loading-spinner">Generating preview...</div>';
+          previewImg.style.backgroundImage = 'none';
+          previewImg.classList.add('loading');
+          
+          // Gather customization options
+          var options = {
+            style: document.getElementById('winter-style')?.value || 'Hoodie',
+            fabricType: document.getElementById('fabric-type')?.value || 'Wool',
+            color: document.getElementById('color')?.value || '#303030',
+            embroidery: document.querySelector('input[name="embroidery"]')?.checked || false,
+            zippers: document.querySelector('input[name="zippers"]')?.checked || false,
+            patches: document.querySelector('input[name="patches"]')?.checked || false,
+            lining: document.querySelector('input[name="lining"]')?.checked || false
+          };
+          
+          try {
+            var response = await fetch('http://localhost:8080/api/designs/generate-preview', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                category: 'winter',
+                options: options
+              })
+            });
+            
+            if (!response.ok) {
+              throw new Error('Failed to generate preview');
+            }
+            
+            var data = await response.json();
+            
+            // Display generated image
+            previewImg.style.backgroundImage = "url('" + data.imageUrl + "')";
+            previewImg.innerHTML = '';
+            previewImg.classList.remove('loading');
+            
+            console.log('Generated with prompt:', data.prompt);
+            
+          } catch (error) {
+            console.error('Error generating preview:', error);
+            previewImg.innerHTML = '<div class="error">Failed to generate preview. Please try again.</div>';
+            previewImg.classList.remove('loading');
+          }
+        });
+      }
     });
   </script>
 </head>
