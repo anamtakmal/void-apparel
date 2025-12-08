@@ -141,6 +141,22 @@ body{
   border-top-left-radius:14px;
   border-top-right-radius:14px;
 }
+
+/* === Image backgrounds for cards === */
+.img-jeans {
+  background-image: url("jeans1.jpg"); /* replace with your file */
+}
+
+.img-winter {
+  background-image: url("winterfit1.jpg"); /* replace with your file */
+}
+
+.img-accessories {
+  background-image: url("accessories1.jpg"); /* replace with your file */
+}
+
+
+
 .card-body{
   padding:22px;
   background: linear-gradient(180deg, rgba(0,0,0,0.06), transparent);
