@@ -83,9 +83,18 @@
             
             var data = await response.json();
             
-            // Display generated image
-            previewImg.style.backgroundImage = "url('" + data.imageUrl + "')";
+            // Display generated image using img tag for full visibility
+            previewImg.style.backgroundImage = 'none';
             previewImg.innerHTML = '';
+            var img = document.createElement('img');
+            img.src = data.imageUrl;
+            img.alt = 'Generated Preview';
+            img.style.maxWidth = '100%';
+            img.style.maxHeight = '500px';
+            img.style.objectFit = 'contain';
+            img.style.borderRadius = '8px';
+            previewImg.appendChild(img);
+            previewImg.classList.add('has-image');
             previewImg.classList.remove('loading');
             
             console.log('Generated with prompt:', data.prompt);
